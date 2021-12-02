@@ -1,4 +1,4 @@
-# freebattie.github.io
+# [freebattie.github.io](https://freebattie.github.io/index.html)
 
 <div id="top"></div>
 <!--
@@ -30,7 +30,7 @@
 # EXSAM IN CREATIVE WEB PROJECT PRO105
 We where given the task to come up whit a interactive webpage using css and html,
 The Projcect needed to be about LEGO and be an interactive webpage whit no javascript.
-
+we do not own the rights to any images used
 # Design Concept
 We deseided to create a interactive site for a fake game and a fake game studio, the game is set in lego star wars  and is called 
 "LEGO STAR WARS ULTIMATE"
