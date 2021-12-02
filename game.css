@@ -1,0 +1,1596 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url(images/crosshair.png), auto;
+    font-family: sans-serif;
+}
+
+.hideInput {
+    position: absolute;
+    top: -20px;
+    z-index: 20;
+}
+
+input {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@keyframes enemyShipMoveEasy {
+    0% {
+        top: -100px;
+        display: block;
+    }
+
+    99% {
+        top: 100vh;
+
+    }
+
+    100% {
+        top: 70vh;
+        z-index: 4;
+    }
+}
+
+@keyframes enemyShipMoveMedium {
+    0% {
+        top: -100px;
+        display: block;
+        transform: rotate(180deg) translateX(50%);
+
+    }
+
+    30% {
+        transform: rotate(180deg) translateX(100%);
+    }
+
+    60% {
+        transform: rotate(180deg) translateX(-100%);
+    }
+
+    99% {
+        top: 100vh;
+        transform: rotate(180deg) translateX(50%);
+    }
+
+    100% {
+        top: 70vh;
+        z-index: 4;
+    }
+}
+
+@keyframes gameoverBackgroundMove {
+    0% {
+        top: -120vh;
+    }
+
+    99% {
+        top: -120vh;
+    }
+
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes background {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 1200vh;
+    }
+}
+
+/* error melding */
+@keyframes error {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.8;
+        box-shadow: gray 3px 2px 5px;
+    }
+}
+
+.scoreContainer::after {
+    color: red;
+    font-weight: bolder;
+    font-size: 34px;
+    content: "Coins: 100";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-name: scor;
+    animation-timing-function: linear;
+    animation-duration: 15s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    z-index: 4;
+
+}
+.scoreContainer {
+    display: flex;
+}
+
+.errorContainer {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: sans-serif;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+
+}
+
+#error h1 {
+    opacity: 1;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+
+#error h4, h2 {
+    text-align: left;
+    margin-bottom: 1px;
+    margin-left: 20px;
+    opacity: 1;
+}
+
+#error h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#error h4 {
+    margin-left: 25px;
+}
+
+#error {
+    opacity: 0;
+    color: white;
+    background-color: red;
+    z-index: -1;
+    border-radius: 10px;
+    width: 400px;
+    height: 200px;
+    box-shadow: gray 5px 3px 20px;
+
+
+}
+
+/* Slutt error melding */
+
+.GameMenu {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    bottom: 35px;
+    z-index: -1;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.GameMenu a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100px;
+    height: 30px;
+    padding-top: 10px;
+    z-index: 3;
+    background-color: black;
+    border-radius: 25px;
+    text-align: center;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content:left;
+    background-color: black;
+    position: absolute;
+    background-image: url(images/background.jpg);
+    background-position: left;
+    background-size: 100vw;
+    background-repeat: repeat;
+    animation-name: background;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    z-index: -1;
+    overflow: hidden;
+
+}
+
+.scoreContainer {
+    width: 700px;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+
+}
+
+.bigShip1, .bigShip2, .bigShip3, .bigShip4 {
+    top: -210px;
+}
+/* Player ship location controll divs */
+.colum {
+    height: 100vh;
+    width: 8px;
+    z-index: 3;
+}
+
+.colum .smallShipImg {
+    bottom: 1vh;
+}
+
+.colum:hover {
+    opacity: 1;
+}
+
+
+.smallShipImg {
+    opacity: 0;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+
+}
+
+
+.enemyShipImage {
+    opacity: 1;
+}
+
+/*Hack for showing player ship when hovering enemy ship instead of the colums  */
+.enemyShipImage:hover .tmpShip {
+    opacity: 1;
+    z-index: 4;
+
+}
+
+.enemyShipImage:hover .tmpShip2 {
+    opacity: 1;
+    z-index: 4;
+
+}
+
+.enemyShipImage:hover .tmpShip3 {
+    opacity: 1;
+    z-index: 4;
+
+}
+
+.enemyShipImage:hover .tmpShip4 {
+    opacity: 1;
+    z-index: 4;
+
+}
+
+/* Playership settings for when targeting a enemy */
+.tmpShip, .tmpShip2, .tmpShip3, .tmpShip4, .tmpShip5, .tmpShip6 {
+    top: 86vh;
+    transform: translateX(-50%);
+
+    opacity: 0;
+}
+.tmpShip5, .tmpShip6 {
+    top: 110vh;
+    transform: translateX(-50%);
+
+    opacity: 0;
+}
+
+/* where we setup the default settings for gameover background */
+.gameoverBackground {
+    color: white;
+    position: absolute;
+    top: -120vh;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+    z-index: 5;
+
+}
+
+.gameoverBackground h1 {
+    font-size: 100px;
+}
+/* Setting the z-index off all enemyships */
+#enemyImageShip1, #enemyImageShip2, #enemyImageShip3, #enemyImageShip4, #enemyImageShip13, #enemyImageShip14, #enemyImageShip15, #enemyImageShip16 {
+    z-index: 4;
+}
+/* Hide all player ships and only show Checked ship see ShipSelect menu */
+.shipSelect1, .shipSelect2, .shipSelect3, .shipSelect4 {
+    opacity: 0;
+}
+
+/* START SMALL ENEMY SHIPS SETUP */
+
+#labelShip1 {
+    position: absolute;
+    top: 10px;
+    left: 220px;
+
+    height: 100px;
+    width: 100px;
+}
+.enemyShipImage {
+    transform: rotate(180deg) translateX(50%);
+    z-index: 3;
+    top: -100px;
+}
+/* MOVEMENT ANIMATION */
+#enemyImageShip1 {
+    display: block;
+    top: 100px;
+    animation: enemyShipMoveEasy 4s linear 0s 1 forwards;
+}
+.gameoverBackgroundLine1 {
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+}
+
+/* DEATH ANIMATION */
+#enemyShip1:checked~.gameoverBackgroundLine1 {
+    display: none;
+}
+
+#enemyShip1:checked~#labelShip1 #enemyImageShip1 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+
+#labelShip2 {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    height: 100px;
+    width: 100px;
+}
+/* MOVEMENT ANIMATION */
+#enemyImageShip2 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 2s 1 forwards;
+}
+.gameoverBackgroundLine2 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 2s 1 forwards;
+}
+/* DEATH ANIMATION */
+#enemyShip2:checked~.gameoverBackgroundLine2 {
+    display: none;
+}
+
+#enemyShip2:checked~#labelShip2 #enemyImageShip2 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+
+#labelShip3 {
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    height: 100px;
+    width: 100px;
+}
+/* MOVEMENT ANIMATION */
+#enemyImageShip3 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 4s 1 forwards;
+}
+.gameoverBackgroundLine3 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 4s 1 forwards;
+}
+/* DEATH ANIMATION */
+#enemyShip3:checked~.gameoverBackgroundLine3 {
+    display: none;
+}
+
+#enemyShip3:checked~#labelShip3 #enemyImageShip3 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+#labelShip4 {
+    position: absolute;
+    top: 10px;
+    left: 60%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip4 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveEasy 4s linear 4s 1 forwards;
+}
+.gameoverBackgroundLine4 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 4s 1 forwards;
+}
+/* DEATH ANIMATION */
+#enemyShip4:checked~.gameoverBackgroundLine4 {
+    display: none;
+}
+
+#enemyShip4:checked~#labelShip4 #enemyImageShip4 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+#labelShip13 {
+    position: absolute;
+    top: 10px;
+    left: 40%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip13 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+.gameoverBackgroundLine13 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip13:checked~#labelShip13 #enemyImageShip13 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+
+#enemyShip13:checked~.gameoverBackgroundLine13 {
+    display: none;
+}
+
+#labelShip14 {
+    position: absolute;
+    top: 10px;
+    left: 30%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip14 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+.gameoverBackgroundLine14 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip14:checked~#labelShip14 #enemyImageShip14 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+#enemyShip14:checked~.gameoverBackgroundLine14 {
+    display: none;
+}
+
+#labelShip15 {
+    position: absolute;
+    top: 10px;
+    left: 10%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip15 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+.gameoverBackgroundLine15 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip15:checked~#labelShip15 #enemyImageShip15 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+#enemyShip15:checked~.gameoverBackgroundLine15 {
+    display: none;
+}
+
+#labelShip16 {
+    position: absolute;
+    top: 10px;
+    left: 70%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip16 {
+    display: block;
+    top: -200px;
+    animation: enemyShipMoveMedium 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+.gameoverBackgroundLine16 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip16:checked~#labelShip16 #enemyImageShip16 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+}
+#enemyShip16:checked~.gameoverBackgroundLine16 {
+    display: none;
+}
+
+/* START BIG SHIPS SETUP */
+.bigShipImage {
+    display: none;
+    position: absolute;
+    height: 250px;
+    width: 200px;
+    z-index: 4;
+
+}
+
+
+.bigShip1 {
+    position: absolute;
+
+    left: 25%;
+
+    height: 100px;
+    width: 100px;
+    z-index: 4;
+}
+/* MOVEMENT ANIMATIONS BIGSHIP1 */
+#enemyImageShip5, #enemyImageShip6 {
+    display: block;
+    top: 100px;
+    animation: enemyShipMoveEasy 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+.gameoverBackgroundLine5 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 4s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+/* DEATH ANIMATION  BIG SHIP 1 */
+#enemyShip5:checked~#labelShip5 #enemyImageShip5 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+    animation-play-state: paused;
+}
+
+#enemyShip5:checked~#labelShip5 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip6:checked~#labelShip6 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip6:checked~#labelShip6 #enemyImageShip6 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+
+}
+
+#enemyShip5:checked~.gameoverBackgroundLine5 {
+    display: none;
+}
+
+.bigShip2 {
+    position: absolute;
+
+    left: 60%;
+
+    height: 100px;
+    width: 100px;
+}
+
+/* MOVMENT ANIMATION BIGSHIP2 */
+#enemyImageShip7, #enemyImageShip8 {
+    display: block;
+    top: 100px;
+    animation: enemyShipMoveMedium 8s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+.gameoverBackgroundLine7 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 8s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION BIGSHIP2 */
+#enemyShip7:checked~#labelShip7 #enemyImageShip7 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+
+
+}
+
+#enemyShip7:checked~#labelShip7 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip8:checked~#labelShip8 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip8:checked~#labelShip8 #enemyImageShip8 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+
+}
+
+#enemyShip7:checked~.gameoverBackgroundLine7 {
+    display: none;
+}
+
+.bigShip3 {
+    position: absolute;
+
+    left: 40%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip9, #enemyImageShip10 {
+    display: block;
+    top: 100px;
+    animation: enemyShipMoveMedium 5s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+.gameoverBackgroundLine9 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 5s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip9:checked~#labelShip9 #enemyImageShip9 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+
+
+}
+
+#enemyShip9:checked~#labelShip9 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip10:checked~#labelShip10 {
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+}
+
+#enemyShip10:checked~#labelShip10 #enemyImageShip10 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+
+    animation-play-state: paused;
+
+}
+
+#enemyShip9:checked~.gameoverBackgroundLine9 {
+    display: none;
+}
+.bigShip4 {
+    position: absolute;
+
+    left: 10%;
+
+    height: 100px;
+    width: 100px;
+}
+/* MOVMENT ANIMATION */
+#enemyImageShip11, #enemyImageShip12 {
+    display: block;
+    top: 100px;
+    animation: enemyShipMoveEasy 5s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+
+.gameoverBackgroundLine11 {
+
+    left: 0;
+    animation: gameoverBackgroundMove 5s linear 0s 1 forwards;
+    animation-play-state: paused;
+}
+/* DEATH ANIMATION */
+#enemyShip11:checked~#labelShip11 #enemyImageShip11 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+    animation-play-state: paused;
+}
+
+#enemyShip11:checked~#labelShip11 {
+    opacity: 0;
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+}
+
+#enemyShip12:checked~#labelShip12 {
+    opacity: 0;
+    transition-property: opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+}
+
+#enemyShip12:checked~#labelShip12 #enemyImageShip12 {
+    opacity: 0;
+    background-color: red;
+    transition-property: background-color, opacity;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+    z-index: -1;
+    border-radius: 20%;
+    animation-play-state: paused;
+}
+
+#enemyShip11:checked~.gameoverBackgroundLine11 {
+    display: none;
+}
+
+#enemyShip11:checked~.errorContainer #error {
+    transition-property: opacity;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    opacity: 1;
+}
+
+
+
+
+
+/* START WAVE 2 WHEN SHIP 4 DIES*/
+#enemyShip4:checked~.bigShip1 #enemyImageShip5 {
+    animation-play-state: running;
+}
+
+#enemyShip4:checked~.bigShip1 #enemyImageShip6 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip4:checked~.gameoverBackgroundLine5 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip4:checked~.bigShip2 #enemyImageShip7 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip4:checked~.bigShip2 #enemyImageShip8 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip4:checked~.gameoverBackgroundLine7 {
+
+
+    animation-play-state: running;
+}
+
+/* START WAVE 3 WHEN BIGSHIP 2 DIES*/
+#enemyShip7:checked~.bigShip3 #enemyImageShip9 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip7:checked~.bigShip3 #enemyImageShip10 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip7:checked~.gameoverBackgroundLine9 {
+
+
+    animation-play-state: running;
+}
+#enemyShip7:checked~.labelShip #enemyImageShip15 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip7:checked~.gameoverBackgroundLine15 {
+
+    animation-play-state: running;
+}
+
+#enemyShip7:checked~.labelShip #enemyImageShip16 {
+
+
+    animation-play-state: running;
+}
+#enemyShip7:checked~.gameoverBackgroundLine16 {
+
+    animation-play-state: running;
+}
+/* START WAVE 4 WHEN BIGSHIP 3 DIES */
+#enemyShip9:checked~.bigShip4 #enemyImageShip11 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.bigShip4 #enemyImageShip12 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.gameoverBackgroundLine11 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.labelShip #enemyImageShip13 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.gameoverBackgroundLine13 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.labelShip #enemyImageShip14 {
+
+
+    animation-play-state: running;
+}
+
+#enemyShip9:checked~.gameoverBackgroundLine14 {
+
+
+    animation-play-state: running;
+}
+
+/* SHIP MENU SELECTION CONTROLS SEE tmpShip */
+#shipToUse1:checked~.labelShip:hover .shipSelect1 {
+    opacity: 1;
+}
+
+#shipToUse2:checked~.labelShip:hover .shipSelect2 {
+    opacity: 1;
+}
+/* IF SHIP 2 HAS BEEN BOUGHT AND IS ACTIVATED REDUCE BIGSHIP HIT TO 1 FOR KILL VS 2 HITS FOR KILL */
+#shipToUse2:checked~.lessHealt {
+    display: none;
+}
+
+#shipToUse3:checked~.labelShip:hover .shipSelect3 {
+    opacity: 1;
+}
+
+#shipToUse4:checked~.labelShip:hover .shipSelect4 {
+    opacity: 1;
+}
+
+#shipToUse1:checked~.colum:hover .shipSelect1 {
+    opacity: 1;
+}
+
+#shipToUse2:checked~.colum:hover .shipSelect2 {
+    opacity: 1;
+}
+
+#shipToUse3:checked~.colum:hover .shipSelect3 {
+    opacity: 1;
+}
+
+#shipToUse4:checked~.colum:hover .shipSelect4 {
+    opacity: 1;
+}
+/* SHIP MENU STYLING */
+#shipToUse1:checked~.shipMenu .ships1 {
+    border: green 3px solid;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+#shipToUse2:checked~.shipMenu .ships2 {
+    border: green 3px solid;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+#shipToUse3:checked~.shipMenu .ships3 {
+    border: green 3px solid;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+#shipToUse4:checked~.shipMenu .ships4 {
+    border: green 3px solid;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+
+#mainMenu:not(:checked)~.backgroundShipMenu {
+   display: flex;
+}
+
+.backgroundShipMenu {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    z-index: 5;
+}
+
+.shipMenu h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.shipMenu {
+    z-index: 6;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 900px;
+    gap: 30px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    background-color: white;
+    border-radius: 20px;
+    opacity: 1;
+    border: 2px solid black;
+}
+.shipMenu img:hover {
+    border: 1px solid black;
+
+    opacity: 1;
+    border-radius: 20px;
+}
+
+.ships {
+    opacity: 0.4;
+    height: 200px;
+    width: 200px;
+}
+
+.ships img {
+    opacity: 0.4;
+    height: 100%;
+    width: 100%;
+}
+
+/* End Ships selection menu */
+
+/* controlling what to display when swaping between ship menu and main menu */
+#menuShipSelect:not(:checked)~.shipMenu {
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+#menuShipSelect:checked~.shipMenu {
+    z-index: 6;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+/* controlling what to display when swaping between how to play menu and main menu */
+
+#menuHowToPlay:not(:checked)~.controlMenu {
+    display: none;
+    z-index: -1;
+}
+
+#menuHowToPlay:not(:checked)~.menuMenu {
+    z-index: 6;
+    opacity: 1;
+}
+
+#menuHowToPlay:checked~.controlMenu {
+    display: flex;
+    z-index: 6;
+}
+
+#menuHowToPlay:checked~.menuMenu {
+    z-index: 0;
+    opacity: 0;
+}
+
+/* Main menu setup */
+.menuMenu {
+    text-align: left;
+    z-index: 6;
+    background-color: white;
+    height: 400px;
+    width: 300px;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0;
+    border: solid black 2px;
+    border-radius: 10px;
+}
+
+/* navigation label setup*/
+.buttonMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 110px;
+    background-color: darkcyan;
+
+    border-radius: 5px;
+    border: black 1px solid;
+
+}
+
+.buttonMenu:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+
+/* controll menu setup */
+.controlMenu {
+    z-index: 6;
+    position: absolute;
+    flex-direction: column;
+    gap: 10px;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 900px;
+    gap: 30px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    background-color: white;
+    border-radius: 20px;
+    opacity: 1;
+    border: 2px solid black;
+
+}
+
+/* Setting up the animation and controll when to start and stop them depnding if menu is open,has not been added to big ship at the end*/
+#labelShip1 {
+
+    animation-duration: 8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+/* BACKGRUND GAME OVER PAUSE  FOR WAVE 1*/
+#mainMenu:checked~#labelShip1 .enemyShipImage {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~#labelShip1 .enemyShipImage {
+
+    animation-play-state: paused;
+}
+
+
+#mainMenu:checked~#labelShip2 .enemyShipImage {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~#labelShip2 .enemyShipImage {
+
+    animation-play-state: paused;
+}
+
+#mainMenu:checked~#labelShip3 .enemyShipImage {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~#labelShip3 .enemyShipImage {
+
+    animation-play-state: paused;
+}
+
+#mainMenu:checked~#labelShip4 .enemyShipImage {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~#labelShip4 .enemyShipImage {
+
+    animation-play-state: paused;
+}
+
+
+#mainMenu:checked~.gameoverBackgroundLine1 {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~.gameoverBackgroundLine1 {
+
+    animation-play-state: paused;
+}
+
+#mainMenu:checked~.gameoverBackgroundLine2 {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~.gameoverBackgroundLine2 {
+
+    animation-play-state: paused;
+}
+
+#mainMenu:checked~.gameoverBackgroundLine3 {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~.gameoverBackgroundLine3 {
+
+    animation-play-state: paused;
+}
+
+#mainMenu:checked~.gameoverBackgroundLine4 {
+
+    animation-play-state: running;
+}
+
+#mainMenu:not(:checked)~.gameoverBackgroundLine4 {
+
+    animation-play-state: paused;
+}
+/* MAIN MENU  */
+#mainMenu:checked~.menuMenu {
+  
+   top:-400px;
+
+}
+#mainMenu:not(:checked)~.menuMenu {
+    z-index: 6;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, z-index 0.5s linear;
+}
+#mainMenu:checked~.backgroundShipMenu {
+   display: none;
+}
+
+#mainMenu:not(:checked)~.GameMenu {
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#mainMenu:checked~.GameMenu {
+    z-index: 6;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, z-index 0.5s linear 0.5s
+}
+/* SHOP MENU */
+.ShopMenu {
+    display: flex;
+    z-index: 6;
+    position: absolute;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+    width: 900px;
+    gap: 30px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    background-color: white;
+    border-radius: 20px;
+    opacity: 0;
+    border: 2px solid black;
+    padding: 20px 0;
+
+}
+.ships2 {
+    display: none;
+}
+
+#shipBuy1:checked~.ships2 {
+    display: block;
+}
+
+#menuShipbuy:checked~.ShopMenu {
+    z-index: 6;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, z-index 0.5s linear 0s;
+
+}
+
+#menuShipbuy:checked~.menuMenu {
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s linear, z-index  0.5s linear 0.5s;
+}
+
+#menuShipbuy:not(:checked)~.menuMenu {
+    z-index: 6;
+    opacity: 1;
+    transition: z-index 0.5s linear, opacity  0.5s linear 0.5s;
+}
+#menuShipbuy:not(:checked)~.ShopMenu {
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    top:-500px;
+    transition: opacity 0.5s ease-in-out, z-index 0.5s linear 0s;
+}
+#menuShipSelect:checked~.menuMenu {
+    height: 400px;
+    width: 800px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#menuShipSelect:not(:checked)~.menuMenu {
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+.card {
+    display: flex;
+    height: 300px;
+    width: 150px;
+    position: relative;
+    justify-content:space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    opacity: 0.4;
+    z-index: 1;
+    
+}
+.card::after{
+    position: fixed;
+    content: "Coins: 700";
+    top:200px;
+    font-weight: bolder;
+}
+.card h4{
+    padding-top: 10px;
+}
+.card img {
+    height: 100px;
+    width: 100px;
+}
+
+.buy {
+    margin-top: 10px;
+    z-index: inherit;
+    opacity: 1;
+}
+ 
+.buy:hover::after{
+    opacity: 0;
+}
+#ShipBuy1:checked~.ShopMenu .buy {
+
+    opacity: 0.3;
+    z-index: 1;
+}
+/* USE A TRANSPARENT BACKGROUND TO MAKE IT IMPOSIBLE TO CLICK BUTTON WHEN OUT OF COINS OR ALREADY BOUGHT IT  */
+.hackForInactiveItems {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+#ShipBuy1:checked~.shipMenu .ships2 {
+    display: block;
+}
+
+.quit{
+    background-color: red;
+}
+/* score board */
+
+#enemyShip1:checked ~.ShopMenu .card {
+    opacity: 1;
+    z-index: 2;
+}
+#enemyShip1:checked~.scoreContainer::after {
+    content: "Coins: 700";
+}
+#enemyShip2:checked~.scoreContainer::after {
+    content: "Coins: 1200";
+}
+
+#enemyShip3:checked~.scoreContainer::after {
+    content: "Coins: 2200";
+}
+#enemyShip4:checked~.scoreContainer::after {
+    content: "Coins: 3600";
+}
+
+
+#enemyShip1:checked~.ShopMenu .card::after {
+    content: "Coins: 700";
+}
+#enemyShip2:checked~.ShopMenu .card::after {
+    content: "Coins: 1200";
+}
+#enemyShip3:checked~.ShopMenu .card::after {
+    content: "Coins: 2200";
+}
+#enemyShip4:checked~.shopMenu .card::after {
+    content: "Coins: 3600";
+}
+#enemyShip5:checked~.ShopMenu.card::after {
+    content: "Coins: 13600";
+}
+#ShipBuy1:checked ~.scoreContainer::after {
+    content: "COINS: 0";
+}
+#enemyShip5:checked~.scoreContainer::after {
+    content: "Coins: 13600";
+}
+#enemyShip6:checked~.scoreContainer::after {
+    content: "Coins: 23600";
+}
+#enemyShip7:checked~.scoreContainer::after {
+    content: "Coins: 40600";
+}
+#enemyShip8:checked~.scoreContainer::after {
+    content: "Coins: 60600";
+}
+#enemyShip9:checked~.scoreContainer::after {
+    content: "Coins: 70600";
+}
+#enemyShip10:checked~.scoreContainer::after {
+    content: "Coins: 80600";
+}
+#enemyShip11:checked~.scoreContainer::after {
+    content: "Coins: 90600";
+}
+#enemyShip12:checked~.scoreContainer::after {
+    content: "Coins: 120000";
+}

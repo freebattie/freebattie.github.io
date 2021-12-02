@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(15, 15, 15);
+}
+
+
+/*Har i oppgave å fortelle høgden på boksene*/
+.individualBlue{
+    border: 2px double rgb(0, 0, 0);
+    border-radius: 10px;
+    /*padding: 4px 4px 4px 4px;
+    margin: 20px 20px 20px 20px;*/
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    
+}
+.individualRed{
+    border: 2px double rgb(0, 0, 0);
+    border-radius: 10px;
+    /*padding: 4px 4px 4px 4px;
+    margin: 20px 20px 20px 20px;*/
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    
+}
+.individualOrange{
+    border: 2px double rgb(0, 0, 0);
+    border-radius: 10px;
+    /*padding: 4px 4px 4px 4px;
+    margin: 20px 20px 20px 20px;*/
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    
+}
+
+/*Dei lignande kode-blokkene er med på å bestemme 
+posisjoneringa til dei forskjellige boksene i div-en*/
+#Whole {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+#Villans{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+#Vehicle{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.skurk{
+    border: 5px black double;
+    height: 400px;
+    width: 400px;
+}
+
+img{
+    height: 400px;
+    width: 100%;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*Den liknande koden nedenfor */
+#linkVehicle {
+   margin-top: 2.5%;
+   padding-bottom: 2.5%;
+}
+
+#linkVillans{
+   margin-top: 2.5%;
+   padding-bottom: 2.5%;
+}
+
+#linkWhole{
+   margin-top: 2.5%;
+   padding-bottom: 2.5%;
+}
+
+/*Forteller navbar eigendelene til navvigasjponsbaren.
+At den er stick, bakgrunnsfargen*/
+#navbar{
+   display: flex;
+   justify-content: space-evenly;
+   background-color: rgb(0, 0, 0);
+   overflow-x: hidden;
+   top: 0;
+   z-index: 2;
+   padding: 5px 5px 5px 5px;
+   width: 100vw;
+}
+
+#navbar li a:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 10px 3px tomato;
+    transition: all 0.4s ease 0s;
+}
+
+/*Denne forteller hvordan liste elementene skal oppføre seg. 
+At det er ingen liste tegn og paddingen rundt  */
+#navbar li{
+    list-style:none;
+    padding: 10px 10px 10px 10px;
+}
+
+
+/*Den forteller hvordan de små titlene i navbaren skal se ut*/
+#navbar li a{
+    color: black;
+    font-weight: 600;
+    background-color: rgb(255, 255, 0);
+    text-decoration: none;
+    border-radius: 25px;
+    padding: 2px 5px;
+}
+
+/*Forteller hvordan nav-baren skal funke, 
+at den helder seg på sida sticky*/
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    
+}
+
+/*Forteller hvordan slide funksjonen skal oppføre seg.*/
+.Slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 2;
+    opacity: 0;
+    text-align: center;
+    
+    
+}
+/*Forteller at når boksene blir hovret skal den lyse opp*/
+.individualBlue:hover{
+    box-shadow: rgb(0, 0, 232) 0px 0px 25px 25px;
+    transform: scale(1);
+}
+
+/*Forteller at når du hoverer over den da kjem det 
+informasjon over den og det skal bli nytt slide classen*/
+.individualBlue:hover .Slide{
+    height: 100%;
+    background-color: rgb(0, 0, 200);
+    z-index: 2;
+    width: 100%;
+    opacity: 1;
+    transition: height 1s ease-in-out, opacity 1.5s ease-in-out;
+}
+/*Satt inn for å gi andre farger til villains og vehicles*/
+.individualRed:hover{
+    box-shadow: rgb(200, 0, 0) 0px 0px 25px 25px;
+    transform: scale(1);
+}
+
+.individualRed:hover .Slide{
+    height: 100%;
+    background-color: rgb(200, 0, 0);
+    z-index: 2;
+    width: 100%;
+    opacity: 1;
+    transition: height 1s ease-in-out, opacity 1.5s ease-in-out;
+}
+.individualOrange:hover{
+    box-shadow: rgb(255,127,80) 0px 0px 25px 25px;
+    transform: scale(1);
+}
+
+.individualOrange:hover .Slide{
+    height: 100%;
+    background-color: rgb(255,127,80);
+    z-index: 2;
+    width: 100%;
+    opacity: 1;
+    transition: height 1s ease-in-out, opacity 1.5s ease-in-out;
+}
+
+/*Forteller korleis p skal vere i Slide diven*/
+.Slide p{
+    font-size: x-large;
+   
+}
+
+/*Den forteller hvor teksten skal ligge i slide funskjonen*/
+.SlideTxt{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    right: 50px;
+    
+}
+
+footer {
+    width: 100vw;
+    background-color: black;
+    height: 75px;
+    margin-top: 10vh;
+    text-align: center;
+}
+
+#textFooter {
+    color: white;
+    padding-top: 25px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="styleNavBar.css">
+    <link rel="shortcut icon" href="images/UltimateIcon.png">
+    <title>Live map</title>
+</head>
+<body>
+    <nav>
+        <ul class="navBar">
+            <li><a href="index.html"><img src="images/game_logo.png" alt="Gamelogo"></a></li>
+            <li><a href="characters.html"><p>Characters</p></a></li>
+            <li><a href="map.html"><p id="currentPage">Map</p></a></li>
+            <li><a href="employees.html"><p>Devs</p></a></li> 
+            <li><a href="load.html"><p>Launch</p></a></li> 
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <section class="info">
+                <div class="headerText">
+                    <h1>LIVE BATTLE MAP</h1>
+                    <h2>Map Controll</h2>
+                      <!--Shows who has more controll of map-->
+                    <div class="controll">
+                        <img  id="empireLogo" src="images/empirelogo.png" alt="EmpireLogo">
+                        <img id="rebelLogo" src="images/rebelLogo.png" alt="rebelLogo">
+                    </div>
+                </div>
+            </section>
+            <!--interactive map-->
+            <section class="mapConteiner">
+                <div class="map"><img id="mapWorld" src="images/legomap.jpg" alt="worldmap"></div>
+                <!-- hack to not zoom when mouse over ship landing -->
+                <div class="hack"></div>
+                <!--interactive points on map-->
+                <section class="baseEmpire CapPoint point">
+                    <div>1</div>
+                    <div class="text">
+                        <h2>EMPIRE BASE</h2>
+                        <ul>
+                            <li>Factory</li>
+                            <li>Spawn Point</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="baseRebel  CapPoint point ">
+                    <div>2</div>
+                    <div class="text">
+                        <h2>REBEL BASE</h2>
+                        <ul>
+                            <li>Factory</li>
+                            <li>Spawn Point</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="CapPoint3  CapPoint point">
+                    <div>3</div>
+                    <div class="text">
+                        <h2>CAPTURE POINT</h2>
+                        <ul>
+                            <li>SHIP Factory</li>
+                            <li>Spawn Point</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="CapPoint4  CapPoint point">
+                    <div>4</div>
+                    <div class="text">
+                        <h2>CAPTURE POINT</h2>
+                        <ul>
+                            <li>Town</li>
+                            <li>Spawn Point</li>
+                        </ul>
+                    </div>
+                </section>
+                <!--zoom in on map to see live fight-->
+                <section class="fight">
+                    <img id="fightMap" src="images/krigtop.jpg" alt="kamp">
+                    <div id="trooper1" class="itemContainer trooper">
+                        
+                        <img class="shipFighter" src="images/trooper.png" alt="trooper">
+                        <img class="trooperShot" src="images/bullet.png" alt="trooper">
+                    </div>
+                    <div id="trooper2" class="itemContainer trooper">
+                       
+                        <img class="shipFighter" src="images/trooper.png" alt="trooper">
+                        <img class="trooperShot" src="images/bullet.png" alt="trooper">
+                    </div>
+                    <div id="trooper3" class="itemContainer trooper">
+                        <img class="shipFighter" src="images/trooper.png" alt="trooper">
+                        <img class="trooperShot" src="images/bullet.png" alt="trooper">
+                    </div>
+                    <div id="trooper4" class="itemContainer trooper">
+                       
+                        <img class="shipFighter" src="images/trooper.png" alt="trooper">
+                        <img class="trooperShot" src="images/bullet.png" alt="trooper">
+                    </div>
+                    <section id="ship9" class="itemContainer">
+                        
+                        <img class="shipFighter" src="images/fighter.png" alt="RebelShip">
+                        <img src="images/hero.png" alt="heten" class="hero">
+                    </section>
+                </section>
+                <!--ships fighting in the sky-->
+                <section id="ship1" class="itemContainer">
+                    <section class="playerId">
+                        <div>BOBFETT22</div>
+                       
+                    </section>
+                    <img class=" shipFighter" src="images/cruisertop.png" alt="EmpireBigShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="trooper">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="trooper">
+                    <div class="shipDamage">
+                        <img class="boom location1" src="images/boom.gif" alt="BOOOM!">
+                        <img class="boom location2" src="images/boom.gif" alt="BOOOM!">
+                        <img class="boom location3" src="images/boom.gif" alt="BOOOM!">
+                    </div>
+                </section>
+               
+                <section id="ship3" class="itemContainer">
+                    <img class="shipFighter" src="images/fighter.png" alt="rebelShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">
+                </section>
+                <section id="ship4" class="itemContainer">
+                    <section class="playerId">
+                        <div>HanSoloBrus</div>
+                       
+                    </section>
+                    <img class="shipFighter" src="images/fighter.png" alt="RebelShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">
+                </section>
+                <section id="ship5" class="itemContainer ">
+                    <section class="playerId">
+                        <div>KillerMan138</div>
+                       
+                    </section>
+                    <img class=" shipFighter" src="images/rebel.png" alt="RebelBigShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">
+                    <div class="shipDamage">
+                        <img class="boom location1" src="images/boom.gif" alt="BOOOM!">
+                        <img class="boom location2" src="images/boom.gif" alt="BOOOM!">
+                        <img class="boom location3" src="images/boom.gif" alt="BOOOM!">
+                    </div>
+                </section>
+                <section id="ship6" class="itemContainer">
+                    <img class="shipFighter" src="images/empireship2.png" alt="EmpireFighterShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">
+                </section>
+                <section id="ship7" class="itemContainer">
+                    <img class="shipFighter" src="images/empireship2.png" alt="EmpireFighterShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">   
+                </section>
+                <section id="ship8" class="itemContainer">
+                    <img class="shipFighter" src="images/fighter.png" alt="RebelShip">
+                    <img class="shipBullet bulletLeftSide" src="images/bullet.png" alt="laser">
+                    <img class="shipBullet bulletRightSide" src="images/bullet.png" alt="laser">
+                </section>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class="employeeFooter">
+            <div id="textFooter"> <p>Ultimate enterprise &copy; 2021</p></div>
+        </div>
+    </footer>
+</body>
+</html>

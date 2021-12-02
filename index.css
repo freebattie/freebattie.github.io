@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: rgb(15, 15, 15);
+}
+
+#mainImgContainer {
+    position: relative;
+}
+
+#mainImg_V2 {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+#ultimateLogoPiece img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    top: 0;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+#ultimateLogoPiece img:nth-child(1) {
+    animation: moveUltimateLogoPieces 0.5s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(2) {
+    animation: moveUltimateLogoPieces 1s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(3) {
+    animation: moveUltimateLogoPieces 1.5s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(4) {
+    animation: moveUltimateLogoPieces 2s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(5) {
+    animation: moveUltimateLogoPieces 1s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(6) {
+    animation: moveUltimateLogoPieces 1.5s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(7) {
+    animation: moveUltimateLogoPieces 2s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(8) {
+    animation: moveUltimateLogoPieces 2.5s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(9) {
+    z-index: 1;
+    animation: moveStarWarsLogo 3s ease-in-out;
+}
+#ultimateLogoPiece img:nth-child(10) {
+    z-index: 2;
+    animation: revealUltimateLogo 3s ease-in-out;
+}
+
+@keyframes moveUltimateLogoPieces {
+    0% {
+        transform: translate(-100%, -100%);
+    }
+    80% {
+        transform: translate(0.5%, 0.5%);
+    }
+    100% {
+        transform: translateY(0%);
+        transform: translateZ(0%);
+    }
+}
+
+@keyframes moveStarWarsLogo {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    81% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 100;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes revealUltimateLogo {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
+
+#launchParty {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#launchPartyText {  
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+#launchParty h1 {
+    padding-bottom: 20px;
+}
+
+#smallText {
+    padding-top: 20px;
+    padding-bottom: 10%;
+    font-size: 0.75rem;
+}
+
+#LukeImage {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#ultimate2 {
+    width: 100%;
+    height: auto;
+}
+
+#preorder {
+    margin: 0;
+    padding: 2.5% 20%;
+    text-align: center;
+    position: relative;
+}
+
+#gameBox {
+    width: 40%;
+    height: auto;
+    padding-bottom: 20px;
+}
+
+#preorder p {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#preorderButton {
+    padding-top: 16px;
+    width: 250px;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: black 0px 0px 2px;
+    margin: auto;
+    color: black;
+}
+
+footer {
+    width: 100vw;
+    background-color: black;
+    height: 75px;
+    margin-top: 10vh;
+    text-align: center;
+    color: white;
+}
+
+#textFooter {
+    color: white;
+    padding-top: 25px;
+}

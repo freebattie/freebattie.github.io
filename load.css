@@ -1,0 +1,215 @@
+body, html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.progressBar {
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+}
+
+/* Style a as a button */
+a {
+    font-size: 24px;
+    display: block;
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* innlasting animasjon */
+.bar {
+    width: 90vw;
+    height: 100%;
+    background-color: blue;
+    animation-name: load;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    flex: 1;
+    position: relative;
+
+}
+
+/*  */
+.bar::after {
+    position: absolute;
+    top: 35%;
+    left: 100%;
+    content: "TEST";
+    animation-name: prosent;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    color: white;
+    font-size: 20px;
+}
+
+/* Start spillet */
+.buttonCancel {
+    opacity: 0;
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    font-family: sans-serif;
+    border-radius: 40px;
+    text-align: center;
+    border: 2px solid black;
+    animation-name: buttonShow;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+}
+
+.screen {
+    background-image: url(images/mainpageImage.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    width: 100vw;
+    height: 110vh;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+@keyframes prosent {
+    0% {
+        content: "0%";
+    }
+
+    2% {
+        content: "2%";
+    }
+
+    4% {
+        content: "4%";
+    }
+
+    10% {
+        content: "10%";
+    }
+
+    15% {
+        content: "10%";
+    }
+
+    20% {
+        content: "20%";
+    }
+
+    30% {
+        content: "20%";
+    }
+
+    40% {
+        content: "40%";
+    }
+
+    50% {
+        content: "50%";
+    }
+
+    60% {
+        content: "60%";
+    }
+
+    70% {
+        content: "70%";
+    }
+
+    75% {
+        content: "70%";
+    }
+
+    79% {
+        content: "80%";
+    }
+
+    95% {
+        content: "97%";
+    }
+
+    98% {
+
+        content: "98%";
+    }
+
+    99% {
+        width: "99%";
+    }
+
+    100% {
+        content: "100%";
+    }
+
+}
+
+@keyframes buttonShow {
+    0% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes load {
+    0% {
+        width: 0px;
+    }
+
+    10% {
+        width: 10%;
+    }
+
+    15% {
+        width: 10%;
+    }
+
+    20% {
+        width: 20%;
+    }
+
+    30% {
+        width: 20%;
+    }
+
+    70% {
+        width: 70%;
+    }
+
+    80% {
+        width: 70%;
+    }
+
+    90% {
+        width: 95%;
+    }
+
+    99% {
+        width: 98%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

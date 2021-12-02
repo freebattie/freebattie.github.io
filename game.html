@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="shortcut icon" href="images/UltimateIcon.png">
+
+</head>
+
+<body>
+
+    <!-- HIDDEN CHECKBOX AND RADIO BUTTONS -->
+    <!-- WAVE 1 -->
+    <input type="checkbox" name="enemyShip1" id="enemyShip1" class="hideInput">
+    <input type="checkbox" name="enemyShip2" id="enemyShip2" class="hideInput">
+    <input type="checkbox" name="enemyShip3" id="enemyShip3" class="hideInput">
+    <input type="checkbox" name="enemyShip4" id="enemyShip4" class="hideInput">
+
+    <!-- WAVE 2 -->
+    <input type="checkbox" name="enemyShip5" id="enemyShip5" class="hideInput">
+    <input type="checkbox" name="enemyShip6" id="enemyShip6" class="hideInput">
+    <input type="checkbox" name="enemyShip7" id="enemyShip7" class="hideInput">
+    <input type="checkbox" name="enemyShip8" id="enemyShip8" class="hideInput">
+    <!-- WAVE 3 -->
+    <input type="checkbox" name="enemyShip9" id="enemyShip9" class="hideInput">
+    <input type="checkbox" name="enemyShip10" id="enemyShip10" class="hideInput">
+    <input type="checkbox" name="enemyShip13" id="enemyShip13" class="hideInput">
+    <input type="checkbox" name="enemyShip14" id="enemyShip14" class="hideInput">
+    <!-- WAVE 4 -->
+    <input type="checkbox" name="enemyShip11" id="enemyShip11" class="hideInput">
+    <input type="checkbox" name="enemyShip12" id="enemyShip12" class="hideInput">
+    <input type="checkbox" name="enemyShip15" id="enemyShip15" class="hideInput">
+    <input type="checkbox" name="enemyShip16" id="enemyShip16" class="hideInput">
+    <!-- error message at end of game -->
+    <div class="errorContainer">
+        <div id="error">
+            <h1>WARNING</h1>
+            <hr>
+            <h2>FATAL ERROR:</h2>
+            <h4>error kode: 413k54NDeR</h4>
+            <h4>msg: "No javascript found"</h4>
+        </div>
+    </div>
+
+    <!-- HIDDEN INPUT  -->
+
+    <!-- select Ship -->
+    <input type="radio" name="ships" id="shipToUse1" checked class="hideInput">
+    <input type="radio" name="ships" id="shipToUse2" class="hideInput">
+    <input type="radio" name="ships" id="shipToUse3" class="hideInput">
+    <input type="radio" name="ships" id="shipToUse4" class="hideInput">
+
+    <!-- for ship buying  -->
+
+    <input type="checkbox" name="ships" id="ShipBuy1" class="hideInput">
+
+    <!-- Main menu  -->
+    <input type="checkbox" name="mainMenuOpen" id="mainMenu" class="hideInput">
+    <input type="checkbox" name="mainMenu" id="menuHowToPlay" class="hideInput">
+    <input type="checkbox" name="mainMenu" id="menuShipSelect" class="hideInput">
+    <input type="checkbox" name="mainMenu" id="menuShipbuy" class="hideInput">
+
+    <!-- SelectShipMenu -->
+    <input type="checkbox" name="mainMenu" id="shipMenu" class="hideInput">
+    <!-- END OF HIDDEN INPUT -->
+
+    <!-- main  Menu -->
+    <div class="menuMenu">
+        <h2>MAIN MENU</h2>
+        <label for="mainMenu" class="buttonMenu playHack">PLAY</label>
+        <label for="menuHowToPlay" class="buttonMenu">CONTROLS</label>
+        <label for="menuShipSelect" class="buttonMenu">SHIPS</label>
+        <label for="menuShipbuy" class="buttonMenu">SHOP</label>
+
+        <a href="game.html" class="buttonMenu">RESTART</a>
+        <a href="index.html" class="buttonMenu quit">QUIT</a>
+    </div>
+    <!-- Meny to restart or go back to index page -->
+    <div class="GameMenu">
+        <label for="mainMenu" class="buttonMenu">MENU</label>
+    </div>
+
+    <!-- Controlls Menu -->
+    <div class="controlMenu">
+        <h2>CONTROLLS</h2>
+        <h3>Use mouse to move ship left and right</h3>
+        <h3>Left mouse click on enemy ships to kill them</h3>
+        <h3>Big ships takes more shots to kill</h3>
+        <h3>You can also buy a better ship that 1 shots big ships</h3>
+
+        <label class=" buttonMenu" for="menuHowToPlay">MENU</label>
+    </div>
+
+    <!-- Ship select Menu -->
+    <div class="shipMenu">
+        <h1>SELECT SHIP TO USE</h1>
+        <label for="shipToUse1"><img src="images/ship.png" class="ships1 ships" alt="ship"></label>
+        <label for="shipToUse2"><img src="images/ship2.png" class="ships2 ships" alt="ship"></label>
+        <label for="shipToUse3"><img src="images/ship3.png" class="ships3 ships" alt="ship"></label>
+        <label for="shipToUse4"><img src="images/ship4.png" class="ships4 ships" alt="ship"></label>
+        <label class=" buttonMenu" for="menuShipSelect">MENU</label>
+    </div>
+    <!-- SHOP MENU -->
+    <div class="ShopMenu">
+        <h1>SHOP</h1>
+        <div class="card">
+            <img src="images/ship2.png" alt="ship">
+            <h4>Price: $22.50</h4>
+            <label for="ShipBuy1" class="buttonMenu buy">BUY</label>
+            <div class="hackForInactiveItems"></div>
+        </div>
+
+
+        <label class=" buttonMenu" for="menuShipbuy">MENU</label>
+    </div>
+
+    <!-- scoreboard for game -->
+    <div class="scoreContainer"></div>
+    <!-- transparent background to stop player from shooting while game is paused in menu (Game is only paused at wave 1)-->
+    <div class="backgroundShipMenu"></div>
+
+    <!-- END MENU -->
+
+
+    <!-- ENEMY WAVES -->
+    <!-- all temp ships futher down are for when you hover over an enemy ship and the colum hack loses focus,
+         this hack places a fake player ship based on the label location to avoid player ship drfting when enemy ship moves 
+         the label for enemyship i placed behind evrything  and enemy ship image inside label is placed infront of everything 
+         so you only activate temp ship for player if you hover on a enemy ship image-->
+ 
+    <!-- WAVE 1 -->
+
+    <label for="enemyShip1" class=" labelShip" tabindex="0" id="labelShip1">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip1">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine1 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip2" class=" labelShip" tabindex="0" id="labelShip2">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip2">
+        <img src="images/ship.png" class="shipSelect1  tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 tmpShip2 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine2 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip3" class=" labelShip" tabindex="0" id="labelShip3">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip3">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip3 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip3 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip3 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine3 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip4" class=" labelShip" tabindex="0" id="labelShip4">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip4">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip4 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip4 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip4 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip4 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine4 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <!-- WAVE 2 -->
+    <label for="enemyShip5" class="labelShip bigShip1" tabindex="0" id="labelShip5">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip5">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip5 smallShipImg" alt="ship">
+    </label>
+
+    <label for="enemyShip6" class=" labelShip bigShip1 lessHealt" tabindex="0" id="labelShip6">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip6">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip6 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine5 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+
+    <label for="enemyShip7" class="labelShip bigShip2" tabindex="0" id="labelShip7">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip7">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip5 smallShipImg" alt="ship">
+    </label>
+
+    <label for="enemyShip8" class=" labelShip bigShip2 lessHealt" tabindex="0" id="labelShip8">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip8">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip6 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine7 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <!-- WAVE 3 -->
+    <label for="enemyShip9" class="labelShip bigShip3" tabindex="0" id="labelShip9">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip9">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip5 smallShipImg" alt="ship">
+    </label>
+
+    <label for="enemyShip10" class=" labelShip bigShip3 lessHealt" tabindex="0" id="labelShip10">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip10">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip6 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine9 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip15" class=" labelShip" tabindex="0" id="labelShip15">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip15">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine15 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip16" class=" labelShip" tabindex="0" id="labelShip16">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip16">
+        <img src="images/ship.png" class="shipSelect1  tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 tmpShip2 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine16 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <!-- WAVE 4 -->
+    <label for="enemyShip11" class="labelShip bigShip4" tabindex="0" id="labelShip11">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip11">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip5 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip5 smallShipImg" alt="ship">
+    </label>
+
+    <label for="enemyShip12" class=" labelShip bigShip4 lessHealt" tabindex="0" id="labelShip12">
+
+        <img src="images/cruisertop1.png" alt="ship" class="bigShipImage enemyShipImage" id="enemyImageShip12">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip6 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip6 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine11 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip13" class=" labelShip" tabindex="0" id="labelShip13">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip13">
+        <img src="images/ship.png" class=" shipSelect1 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship2.png" class=" shipSelect2 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip smallShipImg" alt="ship">
+        <img src="images/ship4.png" class=" shipSelect4 tmpShip smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine13 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+    <label for="enemyShip14" class=" labelShip" tabindex="0" id="labelShip14">
+
+        <img src="images/empireship2.png" alt="ship" class="smallShipImg enemyShipImage" id="enemyImageShip14">
+        <img src="images/ship.png" class="shipSelect1  tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class=" shipSelect3 tmpShip2 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 tmpShip2 smallShipImg" alt="ship">
+    </label>
+    <div class="gameoverBackgroundLine14 gameoverBackground">
+        <h1>GAME OVER</h1>
+    </div>
+
+
+    <!--PLAYER SHIP CONTROL -->
+    <!--hack to controll ship movment and player ship selected -->
+    <div class="colum"><img src=" images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+    <div class="colum"><img src="images/ship.png" class="shipSelect1 smallShipImg" alt="ship">
+        <img src="images/ship2.png" class="shipSelect2 smallShipImg" alt="ship">
+        <img src="images/ship3.png" class="shipSelect3 smallShipImg" alt="ship">
+        <img src="images/ship4.png" class="shipSelect4 smallShipImg" alt="ship">
+    </div>
+</body>
+</html>

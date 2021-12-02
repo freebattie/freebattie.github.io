@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Characters.css">
+        <link rel="stylesheet" href="styleNavBar.css">
+        <link rel="icon" type="image/png" href="images/UltimateIcon.png">
+        <title>Characters</title>
+    </head>
+    <body>
+    
+        <!--Denne kodeblokken er nytta til å lage en scroll knapp, 
+            slik at knappene fører til dei forskjellige divene-->
+        <nav>
+            <ul class="navBar">
+                <li><a href="index.html"><img src="images/game_logo.png" alt="Gamelogo"></a></li>
+                <li><a href="characters.html"><p id="currentPage">Characters</p></a></li>
+                <li><a href="map.html"><p>Map</p></a></li>
+                <li><a href="employees.html"><p>Devs</p></a></li> 
+                <li><a href="load.html"><p>Launch</p></a></li> 
+            </ul>
+            <ul id="navbar"> 
+                <li><a href="#linkWhole" class="blad">Heroes</a></li>
+                <li><a href="#linkVillans" class="blad">Villains</a></li>
+                <li><a href="#linkVehicle" class="blad">Vehicles</a></li>
+            </ul>
+        </nav> 
+        <!--Det er heltene -->
+        <div id="linkWhole"></div>
+        <section id="Whole">
+        <div id="Ray" class="individualBlue">
+               <img src="images/Ray.jpeg" alt="Ray" class="img"> 
+               <div class="Slide">
+                   <div class="SlideTxt"> 
+                        <p>Ray</p>
+                        <p>Position: Attack</p>
+                        <p>Damage per second: 75</p>
+                        <p>Damage per hit: 70</p>
+                        <p>350 HP</p>
+                        <p>Special Ability: Force pull.</p>
+                   </div>
+                </div>
+            </div>
+
+            <div id="Will" class="individualBlue">
+                <img src="images/HanSolo.jpg" alt="Han Solo" class="img">
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>Name: Han Solo</p>
+                        <p>Position: Attack</p>
+                        <p>Damage per second: 80</p>
+                        <p>Damage per hit: 25</p>
+                        <p>Health: 300 HP</p>
+                        <p>Special Ability: Invisible attack</p>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="luke" class="individualBlue">
+               <img src="images/LukeSkywalker.jpeg" alt="Luke Skywalker" class="img">
+               <div class="Slide">
+                <div class="SlideTxt"> 
+                    <p>Name: Luke Skywalker</p>
+                    <p>Position: Attack </p>
+                    <p>per second: 150</p>
+                    <p>Damage per hit: 100</p>
+                    <p>Health: 200 HP</p>
+                    <p>Special Ability: lightsaber Throw</p>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="linkVillans"></div>
+        <section id="Villans">
+            <div id="Darth" class="individualRed">
+                <img src="images/Darth.jpeg" alt="Darth Vader" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                    <p>Name: Darth Vader</p>
+                    <p>position: Ground</p>
+                    <p>Damage per second: 100</p>
+                    <p>Damage per hit: 40</p>
+                    <p>Health:400 HP</p>
+                    <p>Special Ability: Force Choke</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="Thanos" class="individualRed">
+                <img src="images/Jabba.jpg" alt="Jabba The Hut" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>Name: Jabba The Hut</p>
+                        <p>Position: Ground</p>
+                        <p>per second: 10</p>
+                        <p>per hit: 7</p>
+                        <p>Health: 75 HP</p>
+                        <p>Special Ability: Slime-Throw</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Kylo" class="individualRed">
+                <img src="images/kylo.jpeg" alt="Kylo Ren" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>Name: Kylo Ren</p>
+                        <p>Position: Ground</p>
+                        <p>per second: 145</p>
+                        <p>per hit: 75 </p>
+                        <p>Health: 350 HP</p>
+                        <p>Special Ability: Shooting lightsaber</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="linkVehicle"></div>
+        <section id="Vehicle" class="Vehicle">
+            <div id="cruiser" class="individualOrange">
+                <img src="images/Imperial.jpg" alt="Imperial Cruiser" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>Name: Imperial Cruiser</p>
+                        <p>Position: AIR</p>
+                        <p>per second: 100</p>
+                        <p>per hit: 300 </p>
+                        <p>Health: 10 000 HP</p>
+                        <p>Special Ability: Mega Blast</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="walker" class="individualOrange">
+                <img src="images/TIE.jpg" alt="TIE Fighter" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>TIE FIGHTER</p>
+                        <p>Position: AIR</p>
+                        <p>Damage per second:300</p>
+                        <p>per hit: 150</p>
+                        <p>Health: 1800 HP</p>
+                        <p>Ability: Rapid Fire</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="x-Wing" class="individualOrange">
+                <img src="images/Millenial.jpg" alt="Millenial falcon" >
+                <div class="Slide">
+                    <div class="SlideTxt"> 
+                        <p>Name: Millenial falcon</p>
+                        <p>Position: AIR</p>
+                        <p>Damage per second: 400</p>
+                        <p>Damage per hit:200</p>
+                        <p>Health: 2000 HP</p>
+                        <p>Special Ability: Invisible</p>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="employeeFooter">
+                <div id="textFooter"> <p>Ultimate enterprise &copy; 2021</p></div>
+            </div>
+        </footer>
+    </body>
+</html>

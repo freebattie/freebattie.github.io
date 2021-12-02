@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+nav {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    background-image: url("images/topNavBarExtension.jpg");
+    box-shadow: 0px 0px 5px 5px black;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.navBar li {
+    list-style: none;
+    padding: 2.5% 2.5%;
+}
+
+.navBar li a {
+    text-decoration: none;
+}
+
+.navBar li a p {
+    color: black;
+    font-weight: 600;
+    background-color: yellow;
+    border-radius: 25px;
+    padding: 5px 10px;
+    transition: all 0.3s ease 0s; 
+}
+
+
+.navBar li a p:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 10px 3px tomato;
+    transition: all 0.4s ease 0s;
+}
+
+.navBar li a p:hover {
+    transform: scale(117%);
+    transition: all 0.4s ease 0s;
+}
+
+.navBar li a img {
+    position: absolute;
+    background-color: none;
+    width: 10%;
+    height: auto;
+    left: 10px;
+    top: 15px;
+    transition: all 0.2s ease 0s;
+}
+
+.navBar li a img:hover {
+    background-color: none;
+    color: white;
+    transform: scale(110%);
+    transition: all 0.4s ease 0s;
+    box-shadow: none;
+}
+
+#currentPage {
+    color: black;
+    font-weight: 600;
+    background-color: orange;
+    box-shadow: 0px 0px 10px 3px orange;
+    border-radius: 25px;
+    padding: 5px 10px;
+    transition: all 0.3s ease 0s; 
+}
+
+#currentPage:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 10px 3px tomato;
+    transition: all 0.4s ease 0s;
+}

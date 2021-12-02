@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(15, 15, 15);
+    overflow-x: hidden;
+}
+
+#titleh1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    color: white;
+}
+
+/* En enkel footer */
+
+footer {
+    width: 100vw;
+    background-color: black;
+    height: 75px;
+    margin-top: 10vh;
+}
+
+.employeeFooter {
+    display: flex;
+    justify-content: center;
+}
+
+#textFooter {
+    color: white;
+    padding-top: 25px;
+}
+
+/* Logo som fører til hovedside*/
+
+.logo {
+    position: absolute;
+    width: 125px;
+    margin-top: 20px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logo:hover{
+    transform: scale(1.13);
+}
+
+/* Bokser med bilder av de ansatte, hoverfunksjon som viser frem info*/
+
+.employeesContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 70vh;
+    border-radius: 20px;
+}
+
+.employeesContainer .boxes {
+    position: relative;
+    transition: 0.5s;
+    height: 250px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.employeesContainer .boxes:hover {
+    z-index: 1;
+    transform: scale(1.325);
+    box-shadow: 0px 5px 8px 4px black;
+    cursor: pointer;
+}
+
+.employeesContainer .boxes .employeeImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.employeesContainer .boxes .employeeImg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to bottom right, black, tomato);
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 20px;
+    /*mix-blend-mode: ;*/
+}
+
+.employeesContainer .boxes:hover .employeeImg::before {
+    opacity: 0.7;
+    /*Endre hvis bildet ikke skal være med under hover*/
+}
+
+.employeesContainer .boxes .employeeImg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.employeesContainer .boxes .imgText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+.imgText{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+.imgText p{
+margin-left: 5px;
+}
+.employeesContainer .boxes .imgText h2 {
+    color: white;
+    font-size: 18px;
+    transition: 0.5s;
+    margin-bottom: 20px;
+    transform: translateY(30px);
+    opacity: 0;  
+}
+
+.employeesContainer .boxes:hover .imgText h2 {
+    transform: translateY(0);
+    transition-delay: 0.5s;
+    opacity: 1;
+}
+
+.employeesContainer .boxes .imgText p {
+    color: white;
+    transform: translateY(30px);
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.employeesContainer .boxes:hover .imgText p {
+    transform: translateY(0);
+    transition-delay: 0.7s;
+    opacity: 1;
+    font-size: 12px;
+    padding-left: 3px;
+}
+
+
+
+
