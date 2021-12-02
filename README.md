@@ -26,77 +26,40 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
+# EXSAM IN CREATIVE WEB PROJECT PRO105
+We where given the task to come up whit a interactive webpage using css and html,
+The Projcect needed to be about LEGO and be an interactive webpage whit no javascript.
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+# Design Concept
+We deseided to create a interactive site for a fake game and a fake game studio, the game is set in lego star wars  and is called 
+"LEGO STAR WARS ULTIMATE"
+The game is about fighting online for control on a big map as rebels or empire, you select your side and hero or ship to control.
+The page we made has info on the game, the units in the game, a live battle map where you can see players fighting from a top down view and a launcher to play the game.
+Due to the limitation of no javascript the game has some limits.
+### Limits
+* CSS
+* HTML
+* LEGO
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+### Contributors Pages:
+#### Bjarte Nerland: [map.html](https://freebattie.github.io/map.html) and [game.html](https://freebattie.github.io/game.html)
+#### Pascal: [characters.thml](https://freebattie.github.io/characters.html) 
+#### Fredrik:[employees](https://freebattie.github.io/employees.html)
+#### Marius: [index.html](https://freebattie.github.io/index.html)
+#### Tikisti: [load.html](https://freebattie.github.io/load.html)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
-## Getting Started
+# GAME
+The game allowes you to control a ship and shoot down small and big ships, big ships takes 2 hits to kill, smal ships takes 1 hit to kill
+If you manage to kill all ships you get an error about "no javascript found" if you dont kill a ship buy the time it reaches the end its game over.
+you get points for killing ship witch are displayed top center, you can use your points to buy a better ship that oneshots big ships, 
+but you will also get less points then if you play on one of the starter ships
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+there is a menu for you to buy a ship(if you have the coins), read about the controls, select a ship to use, restart the page or go back to index  
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -118,17 +81,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Your Name - [@twitter_handle](https://twitter.com/freebattie) - freebattie@hotmail.com
 
 Project Link: [https://github.com/freebattie/freebattie.github.io](https://github.com/freebattie/freebattie.github.io)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
