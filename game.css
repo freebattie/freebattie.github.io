@@ -85,7 +85,7 @@ a {
     }
 
     to {
-        background-position: 0 1200vh;
+        background-position: 0 -1200vh;
     }
 }
 
@@ -109,11 +109,6 @@ a {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    animation-name: scor;
-    animation-timing-function: linear;
-    animation-duration: 15s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
     z-index: 4;
 
 }
